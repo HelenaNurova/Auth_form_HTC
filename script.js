@@ -5,20 +5,24 @@ var number = document.getElementById("number");
 var symbol = document.getElementById("symbol");
 var length = document.getElementById("length");
 
+// Когда пользователь нажимает на поле пароль, появляется окно сообщения
 
 myInput.onfocus = function () {
     document.getElementById("message").style.display = "block";
 }
 
+// Когда пользователь щелкает за пределами поля пароля, скрывается окно сообщения
 
 myInput.onblur = function () {
     document.getElementById("message").style.display = "none";
 }
 
+// Когда пользователь начинает вводить что-то в поле пароля
 
 myInput.onkeyup = function () {
 
-       var lowerCaseLetters = /[a-z]/g;
+    // Проверка строчных букв    
+    var lowerCaseLetters = /[a-z]/g;
     if (myInput.value.match(lowerCaseLetters)) {
         letter.classList.remove("invalid");
         letter.classList.add("valid");
@@ -27,7 +31,8 @@ myInput.onkeyup = function () {
         letter.classList.add("invalid");
     }
 
-       var upperCaseLetters = /[A-Z]/g;
+    // Проверка заглавных букв
+    var upperCaseLetters = /[A-Z]/g;
     if (myInput.value.match(upperCaseLetters)) {
         capital.classList.remove("invalid");
         capital.classList.add("valid");
@@ -36,7 +41,8 @@ myInput.onkeyup = function () {
         capital.classList.add("invalid");
     }
 
-     var numbers = /[0-9]/g;
+    // Проверка чисел
+    var numbers = /[0-9]/g;
     if (myInput.value.match(numbers)) {
         number.classList.remove("invalid");
         number.classList.add("valid");
@@ -45,7 +51,8 @@ myInput.onkeyup = function () {
         number.classList.add("invalid");
     }
 
-       var symbols = /[!@#$%^&*]/g;
+    // Проверка спецсимволов
+    var symbols = /[!@#$%^&*]/g;
     if (myInput.value.match(symbols)) {
         symbol.classList.remove("invalid");
         symbol.classList.add("valid");
@@ -54,7 +61,8 @@ myInput.onkeyup = function () {
         symbol.classList.add("invalid");
     }
 
-       if (myInput.value.length >= 6) {
+    // Проверка длины
+    if (myInput.value.length >= 6) {
         length.classList.remove("invalid");
         length.classList.add("valid");
     } else {

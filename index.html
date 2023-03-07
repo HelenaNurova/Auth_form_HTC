@@ -37,19 +37,23 @@
 
             <h2>Авторизация</h2>
             <br>
+
             <label for="email"> Email:</label>
             <br>
-            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="email" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}" title="text@text.2-4 символа" placeholder="Email" required>
             <br>
             <label for="psw">Пароль:</label>
             <br>
             <input type="password" id="psw" name="psw" pattern="(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Длина пароля от 6 символов, обязательны одна заглавная и одна строчная буквы латинского алфавита, цифра и спецсимвол." placeholder="Пароль" required>
             <br>
             <label for="phone">Телефон:</label>
+
             <br>
-            <input id="phone" type="text" placeholder="Телефон" required>
+            <input id="phone" type="text" pattern="(\+7|8)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$" title="Требуемый формат: 8хххххххххх, +7хххххххххх, 8(ххх)ххххххх, +7(ххх)ххххххх" placeholder="Телефон" required>
             <br>
             <input type="submit" value="Войти">
+
+
 
         </form>
     </div>
@@ -66,16 +70,62 @@
     <script src="script.js"></script>
 
     <div class="footer">
-        <p id="time"></p>
+
+
 
         <script>
-            var d = new Date();
-            d.setDate(15);
-            document.getElementById("time").innerHTML = d;
+            var months = new Array(13);
+            months[1] = "января";
+            months[2] = "февраля";
+            months[3] = "марта";
+            months[4] = "апреля";
+            months[5] = "мая";
+            months[6] = "июня";
+            months[7] = "июля";
+            months[8] = "августа";
+            months[9] = "сентября";
+            months[10] = "октября";
+            months[11] = "ноября";
+            months[12] = "декабря";
+
+            var time = new Date();
+            var thismonth = months[time.getMonth() + 1];
+            var date = time.getDate();
+            var thisyear = time.getYear();
+            var day = time.getDay() + 1;
+
+            if (thisyear < 2000)
+                thisyear = thisyear + 1900;
+            if (day == 1) DayofWeek = "Воскресенье";
+            if (day == 2) DayofWeek = "Понедельник";
+            if (day == 3) DayofWeek = "Вторник";
+            if (day == 4) DayofWeek = "Среда";
+            if (day == 5) DayofWeek = "Четверг";
+            if (day == 6) DayofWeek = "Пятница";
+            if (day == 7) DayofWeek = "Суббота";
 
         </script>
 
-    </div>
+        <script>
+            setInterval(function() {
+                var cd = new Date();
+                var clockdat = document.getElementById("clockdat");
+                clockdat.innerHTML = cd.toLocaleTimeString();
+            }, 1000);
+
+        </script>
+
+        <div class="time">
+            <span>Сегодня:</span>
+
+            <script>
+                document.write(date + " ");
+                document.write(thismonth + " " + thisyear + " " + "года" + " — " + DayofWeek);
+
+            </script>
+            (<span id="clockdat"></span>)
+
+        </div>
 
 </body>
 

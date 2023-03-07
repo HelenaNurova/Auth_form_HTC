@@ -11,7 +11,8 @@ input {
 
 
 /* Стиль контейнера для входных данных */
-.container {
+.container,
+.time {
     padding: 20px;
 }
 
@@ -51,8 +52,9 @@ input {
     content: "✖";
 }
 
+.time {
+    width: 40%;
+    padding: 12px;
+    margin: 6px 20px 16px 20px;
 
-.footer {
-    padding: 20px;  
-    background: #ddd;     /* Серый фон */
 }
